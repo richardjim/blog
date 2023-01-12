@@ -20,6 +20,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/post', [PostController::class, 'index']);
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/post/create', [PostController::class, 'index']);
+    Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
+});
+// Route::prefix('admin')->group(function () {
+//     Route::get('/post/create', [PostController::class, 'index'])->name('post.create');
+//     Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
+// });
+// Route::get('/post', [PostController::class, 'index']);
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

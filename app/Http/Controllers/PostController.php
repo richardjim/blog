@@ -9,6 +9,11 @@ class PostController extends Controller
     public function index()
     {
         // $posts = Post::all();
-        return view('admin.create');
+        return view('admin.posts.create');
+    }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
     }
 }
