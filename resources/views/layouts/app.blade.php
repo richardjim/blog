@@ -26,7 +26,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'l') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -82,10 +82,16 @@
                 <div class="col-lg-4">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="{{ url('admin/home') }}">Home</a>
+                            <a href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{url('admin/post/create')}}">Create a new post</a>
+                            <a href="{{ route('category.index') }}">Categories</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{ route('category.create') }}">Create Category</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{route('post.create')}}">Create a new post</a>
                         </li>
                     </ul>
                 </div>

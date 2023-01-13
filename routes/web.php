@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,14 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/post/create', [PostController::class, 'index']);
-    Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
+    Route::get('/post/create', [PostsController::class, 'index'])->name('post.create');
+    Route::post('/post/store', [PostsController::class, 'store'])->name('post.store');
+    Route::get('/category/create', [CategoriesController::class, 'create'])->name('category.create');
+    Route::get('/category/index', [CategoriesController::class, 'index'])->name('category.index');
+    Route::post('/category/store', [CategoriesController::class, 'store'])->name('category.store');
+    Route::post('/category/destroy/{id}', [CategoriesController::class, 'destroy'])->name('category.destroy');
+    Route::get('/category/edit/{id}', [CategoriesController::class, 'edit'])->name('category.edit');
+    Route::post('/category/update/{id}', [CategoriesController::class, 'update'])->name('category.update');
 });
 // Route::prefix('admin')->group(function () {
 //     Route::get('/post/create', [PostController::class, 'index'])->name('post.create');
