@@ -27,10 +27,17 @@
                             <span class="glyphicon glyphicon-pencil">Edit</span>
                         </a>
                     </td>
-                    <td>
-                        <a href="{{route('category.destroy', ['id' => $category->id ]) }}" class="btn btn-xs btn-danger">
+                    <!-- <td>
+                        <a href="{{route('category.destroy', ['id' => $category->id ]) }}" method="post" class="btn btn-xs btn-danger">
                             <span class="glyphicon glyphicon-trash">Delete</span>
                         </a>
+                    </td> -->
+                    <td>
+                        <form action="{{ route('category.destroy', $category->id)}}" method="post">
+                            @csrf
+                            @method('post')
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
