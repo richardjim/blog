@@ -14,6 +14,11 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
+        $this->validate($request, [
+            'title' => 'required',
+            'featured' => 'required|image',
+            'content' => 'required'
+        ]);
     }
 }

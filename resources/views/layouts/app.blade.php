@@ -82,7 +82,7 @@
                 <div class="col-lg-4">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="/home">Home</a>
+                            <a href="{{ url('admin/home') }}">Home</a>
                         </li>
                         <li class="list-group-item">
                             <a href="{{url('admin/post/create')}}">Create a new post</a>
