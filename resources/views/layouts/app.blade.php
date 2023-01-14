@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -96,7 +97,6 @@
                     </ul>
                 </div>
                 @endif
-
                 <div class="col-lg-8">
                     @yield('content')
                 </div>
@@ -104,5 +104,11 @@
         </div>
     </div>
 </body>
+<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('js/toastr.min.js') }}" defer></script>
+@if(Session::has('success'))
+toastr.success("{{Session::get('success')}}")
+@endif
+
 
 </html>
