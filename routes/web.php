@@ -23,7 +23,7 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/post/create', [PostsController::class, 'index'])->name('post.create');
+    Route::get('/post/create', [PostsController::class, 'create'])->name('post.create');
     Route::post('/post/store', [PostsController::class, 'store'])->name('post.store');
     Route::get('/category/create', [CategoriesController::class, 'create'])->name('category.create');
     Route::get('/category/index', [CategoriesController::class, 'index'])->name('category.index');
