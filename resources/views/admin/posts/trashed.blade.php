@@ -16,7 +16,10 @@
                     Edit
                 </th>
                 <th>
-                    Trash
+                    Restore
+                </th>
+                <th>
+                    Delete
                 </th>
             </thead>
             <tbody>
@@ -35,7 +38,13 @@
                         </a>
                     </td>
                     <td>
-                        <form action="{{ route('post.destroy',['id' => $post->id ]) }}" method="post">
+                        <form action="{{ route('post.restore',['id' => $post->id ]) }}">
+
+                            <button class="btn btn-success" type="submit">Restore</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ route('post.kill',['id' => $post->id ]) }}" method="post">
                             @csrf
                             @method('post')
                             <button class="btn btn-danger" type="submit">Delete</button>

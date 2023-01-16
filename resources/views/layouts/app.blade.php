@@ -97,6 +97,9 @@
                         <li class="list-group-item">
                             <a href="{{route('post.index')}}">All Post</a>
                         </li>
+                        <li class="list-group-item">
+                            <a href="{{route('post.trashed')}}">All Trashed Post</a>
+                        </li>
                     </ul>
                 </div>
                 @endif

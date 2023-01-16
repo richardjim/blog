@@ -29,6 +29,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/post/update/{id}', [PostsController::class, 'update'])->name('post.update');
     Route::post('/post/delete/{id}', [PostsController::class, 'destroy'])->name('post.destroy');
     Route::get('/post/index', [PostsController::class, 'index'])->name('post.index');
+    Route::post('/post/kill/{id}', [PostsController::class, 'kill'])->name('post.kill');
+    Route::get('/post/restore/{id}', [PostsController::class, 'restore'])->name('post.restore');
+    Route::get('/post/trashed', [PostsController::class, 'trashed'])->name('post.trashed');
     Route::get('/category/create', [CategoriesController::class, 'create'])->name('category.create');
     Route::get('/category/index', [CategoriesController::class, 'index'])->name('category.index');
     Route::post('/category/store', [CategoriesController::class, 'store'])->name('category.store');

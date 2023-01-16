@@ -64,7 +64,7 @@ class PostsController extends Controller
                 // 'slug' => str_slug($request->title)
             ]);
             Session::flash('success', 'Post created successfully.');
-            return redirect()->back();
+            return redirect()->route('post.index');
         }
     }
 
@@ -110,6 +110,41 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->delete();
+
+        Session::flash('success', 'The post was just trashed');
+        return redirect()->back();
+    }
+
+    public function trashed()
+    {
+        $posts = Post::onlyTrashed()->get();
+
+        return view('admin.posts.trashed')->with('posts', $posts);
+
+        // dd($posts);
+    }
+    public function kill($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+
+        $post->forceDelete();
+
+        Session::flash('success', 'Post deleted Permanently');
+
+        return redirect()->back();
+    }
+
+    public function  restore($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+
+        $post->restore();
+
+        Session::flash('success', 'Post restored successfully.');
+
+        return redirect()->route('post.index');
     }
 }
