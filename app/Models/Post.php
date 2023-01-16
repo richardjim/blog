@@ -16,7 +16,12 @@ class Post extends Model
         'featured',
         'content',
         'category_id',
+        // 'slug'
     ];
+    public function getFeaturedAttribute($featured)
+    {
+        return asset($featured);
+    }
 
     protected $dates = ['deleted_at'];
 

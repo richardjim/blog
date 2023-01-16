@@ -25,6 +25,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/post/create', [PostsController::class, 'create'])->name('post.create');
     Route::post('/post/store', [PostsController::class, 'store'])->name('post.store');
+    Route::get('/post/edit/{id}', [PostsController::class, 'edit'])->name('post.edit');
+    Route::post('/post/update/{id}', [PostsController::class, 'update'])->name('post.update');
+    Route::post('/post/delete/{id}', [PostsController::class, 'destroy'])->name('post.destroy');
+    Route::get('/post/index', [PostsController::class, 'index'])->name('post.index');
     Route::get('/category/create', [CategoriesController::class, 'create'])->name('category.create');
     Route::get('/category/index', [CategoriesController::class, 'index'])->name('category.index');
     Route::post('/category/store', [CategoriesController::class, 'store'])->name('category.store');
