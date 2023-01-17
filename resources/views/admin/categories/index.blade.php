@@ -17,6 +17,8 @@
                 </th>
             </thead>
             <tbody>
+                @if($categories->count() > 0)
+
                 @foreach($categories as $category)
                 <tr>
                     <td>
@@ -41,6 +43,11 @@
                     </td>
                 </tr>
                 @endforeach
+                @else
+                <tr>
+                    <th colspan="5" class="text-center">No categories created</th>
+                </tr>
+                @endif
             </tbody>
         </table>
     </div>
