@@ -51,7 +51,9 @@ class PostsController extends Controller
                 'title' => 'required',
                 'featured' => 'required|image',
                 'content' => 'required',
-                'category_id' => 'required'
+                'category_id' => 'required',
+                'tags' => 'required'
+
             ]);
             $featured = $request->featured;
             $featured_new_name = time() . $featured->getClientOriginalName();
@@ -64,12 +66,15 @@ class PostsController extends Controller
                 'category_id' => $request->category_id,
                 // 'slug' => str_slug($request->title)
             ]);
+            $post->tags()->attach($request->tags);
+
             Session::flash('success', 'Post created successfully.');
             return redirect()->route('post.index');
         }
     }
 
     /**
+     * 
      * Display the specified resource.
      *
      * @param  int  $id
